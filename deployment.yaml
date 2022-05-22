@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:hello
+  labels:
+    app: hello
+spec:
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      # This section describes the containers that make up the deployment
+      containers:
+        - name: hello
+          # CHANGE [PROJECT_ID] to the project where your Cloud SQL instance lives
+          image:  gcr.io/notional-portal-349616/hello:latest
+          # Set env variables used for database connection

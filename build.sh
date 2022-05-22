@@ -1,22 +1,19 @@
-#Change project id and namespace here
-projectid=notional-portal-349616
+projectid=<yourprojectid>
 namespace=apps
 gkecluster=myk8s
-#gcloud container clusters create myk8s --project notional-portal-349616 --zone europe-west2-a --num-nodes=2
-#replacing wth project id
-sed -i 's/projectid/{$projectid}/g' deployment.yaml
-echo "Cloning Spring boat application"
-#git clone https://github.com/spring-projects/spring-petclinic
-sleep 5
-echo "Builiding application with docker"
+zone=europe-west2-a
+
+echo "Creating cluster"
+gcloud container clusters create $gkecluster --project $projectid --zone $zone --num-nodes=2
+echo "getting credentials"
+gcloud container clusters  get-credentials $gkecluster --zone $zone --project $projectid
 docker build --tag  gcr.io/$projectid/hello .
-sleep 5
 docker push gcr.io/$projectid/hello
-# switching to training cluster
-gcloud container clusters  get-credentials $gkecluster
-sleep 5
+kubectl create ns apps
+
 kubectl apply -f deployment.yaml -n $namespace
-sleep 5
 kubectl apply -f service.yaml -n $namespace
-sleep 5
+
+
+kubectl get all -n apps
 

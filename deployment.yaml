@@ -1,10 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:hello
-  labels:
-    app: hello
+  name: hello
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: hello
@@ -13,9 +12,9 @@ spec:
       labels:
         app: hello
     spec:
-      # This section describes the containers that make up the deployment
       containers:
         - name: hello
-          # CHANGE [PROJECT_ID] to the project where your Cloud SQL instance lives
-          image:  gcr.io/<prjid>/hello:latest
-          # Set env variables used for database connection
+          image: gcr.io/notional-portal-349616/hello:latest
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always

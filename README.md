@@ -2,8 +2,8 @@
 hello world app for testing <br>
 login to gcloud <br>
 gcloud auth login <br>
-Change project settings in build.sh <br>
-### below lines
+Change project settings in build.sh <br> 
+below lines <br>
 projectid=<>  <br>
 namespace= <>  <br>
 gkecluster=<cluster name>  <br>

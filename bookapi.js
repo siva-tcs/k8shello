@@ -4,38 +4,30 @@ const app = express();
 app.use(express.json());
  
 const books = [
-
+{title: 'Harry Potter', id: 1},
 {title: 'Twilight', id: 2},
-{title: 'Lorien Legacies', id: 3},
-{title: 'Vikram', id: 4},
-{title: 'RRR', id: 5},
-{title: 'KGF Part 2', id: 6},
+{title: 'Lorien Legacies', id: 3}
 ]
  
 //READ Request Handlers
 app.get('/', (req, res) => {
-res.send('Welcome to REST API with Node.js Testing!!');
+res.send('Welcome to API with Node.js!!');
 });
-
-app.get('/heartbeat', (req, res) => {
-    res.send('API Version 1.0.0!!');
-    });
-    
-
+ 
 app.get('/api/books', (req,res)=> {
 res.send(books);
 });
  
 app.get('/api/books/:id', (req, res) => {
 const book = books.find(c => c.id === parseInt(req.params.id));
- 
+console.log("get method invoked for request book id"); 
 if (!book) res.status(404).send('<h2 style="font-family: Malgun Gothic; color: darkred;">Ooops... Cant find what you are looking for!</h2>');
 res.send(book);
 });
  
 //CREATE Request Handler
 app.post('/api/books', (req, res)=> {
- 
+console.log("post method invoked for request book id");  
 const { error } = validateBook(req.body);
 if (error){
 res.status(400).send(error.details[0].message)

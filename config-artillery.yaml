@@ -1,0 +1,24 @@
+config:
+  target: "http://35.244.49.78/api/"
+  phases:
+    - duration: 10
+      arrivalRate: 5
+      name: Warm up
+    - duration: 10
+      arrivalRate: 5
+      rampTo: 50
+      name: Ramp up load
+    - duration: 10
+      arrivalRate: 5
+      name: Sustained load
+
+scenarios:
+  - name: "Search Books"
+    flow:
+      - post:
+          url: "/books"
+      - get:
+          url: "/books/3"
+      - think: 5
+      - post:
+          url: "/books"

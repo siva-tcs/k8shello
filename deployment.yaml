@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: hello
-          image: gcr.io/notional-portal-349616/hello:latest
+          image: gcr.io/{projectid}/api:latest
           ports:
             - containerPort: 8080
           imagePullPolicy: Always

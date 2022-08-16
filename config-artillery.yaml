@@ -1,5 +1,5 @@
 config:
-  target: "http://35.244.49.78/api/"
+  target: "http://35.244.48.234/api"
   phases:
     - duration: 10
       arrivalRate: 5
@@ -15,10 +15,7 @@ config:
 scenarios:
   - name: "Search Books"
     flow:
-      - post:
-          url: "/books"
       - get:
           url: "/books/3"
       - think: 5
-      - post:
-          url: "/books"
+

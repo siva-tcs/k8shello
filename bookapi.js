@@ -6,7 +6,9 @@ app.use(express.json());
 const books = [
 {title: 'Harry Potter', id: 1},
 {title: 'Twilight', id: 2},
-{title: 'Lorien Legacies', id: 3}
+{title: 'Lorien Legacies', id: 3},
+{title: 'You can win', id: 4},
+
 ]
  
 //READ Request Handlers
